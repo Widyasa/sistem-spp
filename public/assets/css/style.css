@@ -1,0 +1,12 @@
+/* Login form style */
+.sign-outer-wrapper{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sign-wrapper .form-control,
+.sign-wrapper .form-control::placeholder{
+    font-size: 0.875rem!important;
+}

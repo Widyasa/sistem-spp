@@ -3,7 +3,6 @@ class Auth extends Controller {
     public function index()
     {
         if (isset($_SESSION['user'] ['id_pengguna'])){
-            var_dump("halo"); die();
             redirect('dashboard/index');
         }
         $data['title']= 'Login';
@@ -16,7 +15,6 @@ class Auth extends Controller {
     {
         $_SESSION['user'] = $user;
     }
-
     public function verifyPassword($data)
     {
         if( $_POST['password']  === $data['password']){
@@ -25,18 +23,13 @@ class Auth extends Controller {
         }
         redirect('auth/');
     }
-
     public function login()
     {
         $user = $this->model('userModel')->selectUserByUsername($_POST['username']);
-//        var_dump($user); die();
         if ($user){
             $this->verifyPassword($user);
-        }else{
-            redirect('auth/');
         }
     }
-
     public function logout()
     {
         session_destroy();

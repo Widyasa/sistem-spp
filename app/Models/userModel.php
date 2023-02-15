@@ -21,4 +21,15 @@ class userModel{
         return $this->db->resultSingle();
     }
 
+    public function selectAllPetugas()
+    {
+        $this->db->query("select * from {$this->pengguna} where `role`='petugas'");
+        return $this->db->resultAll();
+    }
+    public function selectAllSiswa()
+    {
+        $this->db->query("select * from {$this->pengguna} where `role`='siswa'");
+        return $this->db->resultAll();
+    }
+
 }

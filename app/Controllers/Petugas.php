@@ -2,17 +2,40 @@
 class Petugas extends Controller{
     public function index()
     {
+        if(empty($_SESSION['user'])){
+            redirect('auth');
+        }
+        
         $data['title'] = "Petugas";
-        $this->view('templates/header');
-        $this->view('templates/sidebar');
-        $this->view('templates/header');
-        $this->view('templates/footer');
+        $data['petugas'] = $this->model('userModel')->selectAllPetugas();
+        // var_dump($data['petugas']); die();
+        $this->view('templates/header', $data);
+        $this->view('templates/sidebar', $data);
+        $this->view('pages/admin/petugas', $data);
+        $this->view('templates/footer', $data);
     }
 
     public function addPetugas()
     {
-        if ($this->model('petugasModel')->addPetugas($_POST['nama'])){
-            $this->model('petugasModel')->addPetugasPengguna($_POST['username'],$_POST['password']);
+        if ($this->model('petugasModel')->addPetugas($_POST)){
+            redirect('petugas');
+        }
+        redirect('petugas');
+    }
+
+    public function editPetugas()
+    {
+        if ($this->model('petugasModel')->editPetugas($_POST) || $this->model('petugasModel')->editPengguna($_POST)){
+            redirect('petugas');
+        }
+        redirect('petugas');
+    }
+
+    public function deletePetugas()
+    {
+        // var_dump($_POST['petugas_id']); die();
+
+        if ($this->model('petugasModel')->deletePetugas($_POST['petugas_id'])) {
             redirect('petugas');
         }
     }

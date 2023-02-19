@@ -23,13 +23,16 @@ class userModel{
 
     public function selectAllPetugas()
     {
-        $this->db->query("select * from {$this->pengguna} where `role`='petugas'");
+        $query = " SELECT {$this->pengguna}.*, {$this->petugas}.* FROM {$this->pengguna} INNER JOIN {$this->petugas} ON {$this->pengguna}.pengguna_id = {$this->petugas}.pengguna_id WHERE {$this->pengguna}.role='petugas' ";
+        $this->db->query($query);
         return $this->db->resultAll();
+        
+        
     }
     public function selectAllSiswa()
     {
         $this->db->query("select * from {$this->pengguna} where `role`='siswa'");
-        return $this->db->resultAll();
+        return $this->db->resultALl();
     }
 
 }

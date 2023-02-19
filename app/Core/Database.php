@@ -18,7 +18,7 @@ class Database{
 
     public function query($query)
     {
-        $this->stmt =$this->dbh->prepare($query);
+        $this->stmt = $this->dbh->prepare($query);
     }
 
     public function bind($param, $value, $type=null)
@@ -48,13 +48,13 @@ class Database{
 
     public function rowCount()
     {
-        $this->stmt->rowCount();
+        return $this->stmt->rowCount();
     }
 
     public function resultAll()
     {
         $this->execute();
-        $this->stmt->fetchall(PDO::FETCH_ASSOC);
+        return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     public function resultSingle()
     {

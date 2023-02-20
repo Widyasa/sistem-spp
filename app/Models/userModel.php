@@ -4,6 +4,8 @@ class userModel{
     private $siswa = 'siswa';
     private $petugas = 'petugas';
     private $admin = 'admin';
+    private $kelas = 'kelas';
+    private $pembayaran = 'pembayaran';
     private $db;
 
     public function __construct()
@@ -31,7 +33,8 @@ class userModel{
     }
     public function selectAllSiswa()
     {
-        $this->db->query("select * from {$this->pengguna} where `role`='siswa'");
+        $query = "SELECT {$this->siswa}.*, {$this->pengguna}.*, {$this->kelas}.*, {$this->pembayaran}.tahun_ajaran from ((({$this->siswa} inner join {$this->pengguna} on {$this->siswa}.pengguna_id = {$this->pengguna}.pengguna_id) inner join {$this->kelas} on {$this->siswa}.kelas_id = {$this->kelas}.kelas_id) inner join {$this->pembayaran} on {$this->siswa}.pembayaran_id = {$this->pembayaran}.pembayaran_id)";
+        $this->db->query($query);
         return $this->db->resultALl();
     }
 

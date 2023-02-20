@@ -30,7 +30,7 @@
                            <?php foreach ($data['kelas'] as $kelas) : ?>
                             <tr>
                                 <td><?=$i++?></td>
-                                <td><?=$kelas['nama']?></td>
+                                <td><?=$kelas['nama_kelas']?></td>
                                 <td><?=$kelas['kompetensi_keahlian']?></td>
                                 <td class="d-flex flex-row">
                                 <button type="button" class="align-self-end btn btn-warning" href="#" data-toggle="modal" data-target="#editModal<?=$kelas['kelas_id']?>">
@@ -99,7 +99,7 @@
                     <div class="modal-body">
                             <div class="d-flex flex-column">
                                 <label for = "username">Nama Kelas</label>  
-                                <input type="text" name="nama" value="<?=$kelas['nama']?>" class="form-control form-control-user">
+                                <input type="text" name="nama_kelas" value="<?=$kelas['nama_kelas']?>" class="form-control form-control-user">
                             </div>
                             <div class="d-flex flex-column">
                                 <label for = "kompetensi_keahlian">Kompetensi Keahlian</label>  

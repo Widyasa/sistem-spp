@@ -16,17 +16,17 @@ class kelasModel{
 
     public function addKelas($data)
     {
-        $this->db->query("INSERT into {$this->kelas} values (null,:nama,:kompetensi_keahlian)");
-        $this->db->bind('nama', $data['nama']);
+        $this->db->query("INSERT into {$this->kelas} values (null,:nama_kelas,:kompetensi_keahlian)");
+        $this->db->bind('nama_kelas', $data['nama_kelas']);
         $this->db->bind('kompetensi_keahlian', $data['kompetensi_keahlian']);
         $this->db->execute();
         return $this->db->rowCount();
     }
     public function editKelas($data)
     {
-        $this->db->query("UPDATE {$this->kelas} set `nama`=:nama,`kompetensi_keahlian`=:kompetensi_keahlian where `kelas_id`=:kelas_id");
+        $this->db->query("UPDATE {$this->kelas} set `nama_kelas`=:nama_kelas,`kompetensi_keahlian`=:kompetensi_keahlian where `kelas_id`=:kelas_id");
         $this->db->bind('kelas_id', $data['kelas_id']);
-        $this->db->bind('nama', $data['nama']);
+        $this->db->bind('nama_kelas', $data['nama_kelas']);
         $this->db->bind('kompetensi_keahlian', $data['kompetensi_keahlian']);
         $this->db->execute();
         return $this->db->rowCount();

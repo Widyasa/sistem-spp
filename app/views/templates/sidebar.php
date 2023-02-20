@@ -16,7 +16,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item">
-            <a class="nav-link" href="<?=baseurl?>">
+            <a class="nav-link" href="<?=baseurl?>/dashboard">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
         </li>
@@ -32,19 +32,7 @@
         </li>
 
         <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-               aria-expanded="true" aria-controls="collapseTwo">
-                <i class="fas fa-fw fa-mail-bulk"></i>
-                <span>Pinjaman</span>
-            </a>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="buttons.html">Peminjaman</a>
-                    <a class="collapse-item" href="cards.html">Detail Pinjam</a>
-                </div>
-            </div>
-        </li>
+        
 
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
@@ -70,7 +58,7 @@
             <div id="collapseUsers" class="collapse" aria-labelledby="headingUtilities"
                  data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="<?=baseurl?>">Pegawai</a>
+                    <a class="collapse-item" href="<?=baseurl?>/siswa">Siswa</a>
                     <a class="collapse-item" href="<?=baseurl?>petugas">Petugas</a>
                 </div>
             </div>

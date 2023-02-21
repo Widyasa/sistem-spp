@@ -46,84 +46,53 @@
 <?php foreach ($data['siswa'] as $siswa) : ?>
     
 
-<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"aria-hidden="true">
+<div class="modal fade" id="addModal<?=$siswa['siswa_id']?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Tambah Siswa</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Pembayaran SPP</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <form action="<?=baseurl?>siswa/addSiswa" method="post">    
+                <form action="<?=baseurl?>transaksi/addTransaksi" method="post">    
+                    <input type="hidden" name="siswa_id" value="<?=$siswa['siswa_id']?>">
+                    <input type="hidden" name="petugas_id" value="<?=$data['petugas'] ['petugas_id']?>">
+            
+                    <input type="hidden" name="pembayaran_id" value="<?=$siswa['pembayaran_id']?>">
                     <div class="modal-body">
                         <div class="row gy-4">
                             <div class="col-6">
                                 <div class="d-flex flex-column">
-                                    <label for = "nisn">NISN</label>  
-                                    <input type="text" name="nisn" class="form-control form-control-user">
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="d-flex flex-column">
-                                    <label for = "nisn">NIS</label>  
-                                    <input type="text" name="nis" class="form-control form-control-user">
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="d-flex flex-column">
-                                    <label for = "nama">Nama</label>  
-                                    <input type="text" name="nama" class="form-control form-control-user">
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="d-flex flex-column">
-                                    <label for = "telepon">No HP</label>  
-                                    <input type="text" name="telepon" class="form-control form-control-user">
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="d-flex flex-column">
-                                    <label for = "telepon">Kelas</label>  
-                                    <select name="kelas_id" id="">
-                                        <?php foreach ($data['kelas'] as $kelas) : ?>
-                                            <option class="form-control" value="<?=$kelas['kelas_id']?>">
-                                            <?=$kelas['nama_kelas']?>
-                                        </option>
-                                        <?php endforeach ?>
+                                    <label for = "nisn">Bulan</label>  
+                                    <select name="bulan_dibayar" id="">
+                                        <option value="01">Januari</option>
+                                        <option value="02">Februari</option>
+                                        <option value="03">Maret</option>
+                                        <option value="04">April</option>
+                                        <option value="05">Mei</option>
+                                        <option value="06">Juni</option>
+                                        <option value="07">Juli</option>
+                                        <option value="08">Agustus</option>
+                                        <option value="09">September</option>
+                                        <option value="10">Oktober</option>
+                                        <option value="11">November</option>
+                                        <option value="12">Desember</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="d-flex flex-column">
-                                    <label for = "telepon">Tahun Ajaran</label>  
-                                    <select name="pembayaran_id" id="">
-                                        <?php foreach ($data['pembayaran'] as $pembayaran) : ?>
-                                            <option class="form-control" value="<?=$pembayaran['pembayaran_id']?>">
-                                            <?=$pembayaran['tahun_ajaran']?>
-                                        </option>
+                                    <label for = "tahun_dibayar">Tahun</label>  
+                                    <select name="tahun_dibayar" id="">
+                                        <?php foreach ($data['tahun_ajaran'] as $tahun_ajaran) :?>
+                                            <option value="<?=$tahun_ajaran?>"><?=$tahun_ajaran?></option>
                                         <?php endforeach ?>
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-6">
-                                <div class="d-flex flex-column">
-                                    <label for = "username">Username</label>  
-                                    <input type="text" name="username" class="form-control form-control-user">
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="d-flex flex-column">
-                                    <label for = "password">Password</label>  
-                                    <input type="text" name="password" class="form-control form-control-user">
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="d-flex flex-column">
-                                    <label for = "alamat">Alamat</label>  
-                                    <input type="text" name="alamat" class="form-control form-control-user">
-                                </div>
-                            </div>
+                           
+                            
 
                         </div>
                             
@@ -137,5 +106,6 @@
             </div>
         </div>
 </div>
+<?php endforeach ?>
 
 

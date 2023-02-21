@@ -4,7 +4,7 @@
 <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-dark pt-5 sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul class="navbar-nav bg-gradient-primary pt-5 sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
@@ -12,57 +12,43 @@
         </a>
 
         <!-- Divider -->
-        <hr class="sidebar-divider my-0">
+        
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item">
-            <a class="nav-link" href="<?=baseurl?>/dashboard">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Dashboard</span></a>
+            <a class="nav-link" href="<?=baseurl?>dashboard">
+                <span>Dashboard</span>
+            </a>
         </li>
 
         <!-- Divider -->
-        <hr class="sidebar-divider my-0">
+       
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item">
-            <a class="nav-link" href="<?=baseurl?>">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Inventaris</span></a>
+            <a class="nav-link" href="<?=baseurl?>Transaksi">
+                <span>SPP</span>
+            </a>
+        </li>
+        <li class="nav-item">
+             <a class="nav-link " href="<?=baseurl?>pembayaran/">Tahun Ajaran</a>
+        </li>
+        <li class="nav-item">
+             <a class="nav-link" href="<?=baseurl?>kelas/">Kelas</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="<?=baseurl?>/siswa">Siswa</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="<?=baseurl?>petugas">Petugas</a>
         </li>
 
         <!-- Nav Item - Pages Collapse Menu -->
         
 
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-               aria-expanded="true" aria-controls="collapseUtilities">
-                <i class="fas fa-fw fa-wrench"></i>
-                <span>Master Data</span>
-            </a>
-            <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                 data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item " href="<?=baseurl?>pembayaran/">Pembayaran</a>
-                    <a class="collapse-item" href="<?=baseurl?>kelas/">Kelas</a>
-                </div>
-            </div>
-        </li>
+    
 
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsers"
-               aria-expanded="true" aria-controls="collapseUsers">
-                <i class="fas fa-fw fa-wrench"></i>
-                <span>Users</span>
-            </a>
-            <div id="collapseUsers" class="collapse" aria-labelledby="headingUtilities"
-                 data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="<?=baseurl?>/siswa">Siswa</a>
-                    <a class="collapse-item" href="<?=baseurl?>petugas">Petugas</a>
-                </div>
-            </div>
-        </li>
+       
 
         <!-- Divider -->
         <hr class="sidebar-divider my-0">

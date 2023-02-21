@@ -1,5 +1,5 @@
 <?php
-class Siswa extends Controller{
+class Transaksi extends Controller{
     public function index()
     {
         if(empty($_SESSION['user'])){
@@ -10,8 +10,7 @@ class Siswa extends Controller{
         $data['siswa'] = $this->model('userModel')->selectAllSiswa();
         $data['siswaSingle'] = $this->model('userModel')->selectSingleSiswa();
         $data['tahun_ajaran'] = explode('/', $data['siswaSingle']['tahun_ajaran']);
-        // $data['kelas'] = $this->model('kelasModel')->selectAllKelas();
-        // $data['pembayaran'] = $this->model('pembayaranModel')->selectAllPembayaran();
+        $data['petugas'] = $this->model('userModel')->selectSinglePetugas();
         
         // var_dump($data['petugas']); die();
         $this->view('templates/header', $data);
@@ -22,11 +21,13 @@ class Siswa extends Controller{
 
     public function addTransaksi()
     {
+        var_dump($_POST); die;
         $condition = $this->model('transaksiModel')->getDataBulan($_POST);
         if($condition == 0){
             if ($this->model('transaksiModel')->addTransaksi($_POST)){
                 redirect('transaksi');
             }
+            var_dump('tambah transaksi gagal'); die;
         }
         redirect('transaksi');
         

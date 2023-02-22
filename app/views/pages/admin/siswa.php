@@ -10,6 +10,8 @@
 
         </div>
 
+        <?php Flasher::flash()?>
+
         <div class="card shadow mb-4">
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">Tabel Petugas</h6>
@@ -76,25 +78,25 @@
                             <div class="col-6">
                                 <div class="d-flex flex-column">
                                     <label for = "nisn">NISN</label>  
-                                    <input type="text" name="nisn" class="form-control form-control-user">
+                                    <input type="text" name="nisn" class="form-control form-control-user" required>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="d-flex flex-column">
                                     <label for = "nisn">NIS</label>  
-                                    <input type="text" name="nis" class="form-control form-control-user">
+                                    <input type="text" name="nis" class="form-control form-control-user" required>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="d-flex flex-column">
                                     <label for = "nama">Nama</label>  
-                                    <input type="text" name="nama" class="form-control form-control-user">
+                                    <input type="text" name="nama" class="form-control form-control-user" required>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="d-flex flex-column">
                                     <label for = "telepon">No HP</label>  
-                                    <input type="text" name="telepon" class="form-control form-control-user">
+                                    <input type="text" name="telepon" class="form-control form-control-user" required>
                                 </div>
                             </div>
                             <div class="col-6">
@@ -124,19 +126,19 @@
                             <div class="col-6">
                                 <div class="d-flex flex-column">
                                     <label for = "username">Username</label>  
-                                    <input type="text" name="username" class="form-control form-control-user">
+                                    <input type="text" name="username" class="form-control form-control-user" required>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="d-flex flex-column">
                                     <label for = "password">Password</label>  
-                                    <input type="text" name="password" class="form-control form-control-user">
+                                    <input type="text" name="password" class="form-control form-control-user" required>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="d-flex flex-column">
                                     <label for = "alamat">Alamat</label>  
-                                    <input type="text" name="alamat" class="form-control form-control-user">
+                                    <input type="text" name="alamat" class="form-control form-control-user" required>
                                 </div>
                             </div>
 

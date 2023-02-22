@@ -20,25 +20,31 @@ class Siswa extends Controller{
 
     public function addSiswa()
     {
-        if ($this->model('siswaModel')->addSiswa($_POST)){
+        if ($this->model('siswaModel')->addSiswa($_POST)>0){
+             Flasher::setFlash('Berhasil', 'Ditambahkan', 'success');
             redirect('siswa');
         }
+        Flasher::setFlash('Gagal', 'Data', 'danger');
         redirect('siswa');
     }
 
     public function editSiswa()
     {
-        if ($this->model('siswaModel')->editSiswa($_POST) || $this->model('siswaModel')->editPengguna($_POST)){
+        if ($this->model('siswaModel')->editSiswa($_POST)>0){
+            Flasher::setFlash('Berhasil', 'Diubah', 'success');
             redirect('siswa');
         }
-        redirect('siswa');
+            Flasher::setFlash('Gagal', 'Ditambahkan', 'danger');
+            redirect('siswa');
+        
     }
 
     public function deleteSiswa()
     {
         // var_dump($_POST['petugas_id']); die();
 
-        if ($this->model('siswaModel')->deleteSiswa($_POST['siswa_id'])) {
+        if ($this->model('siswaModel')->deleteSiswa($_POST['siswa_id'])==1) {
+            Flasher::setFlash('Berhasil', 'Dihapus', 'success');
             redirect('siswa');
         }
     }

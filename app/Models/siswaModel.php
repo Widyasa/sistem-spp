@@ -40,7 +40,8 @@ class siswaModel{
 
     public function editSiswa($data)
     {
-        $this->db->query("update  {$this->siswa} set `nisn`=:nisn, `nis`=:nis, `nama`=:nama, `alamat`=:alamat, `telepon`=:telepon, `kelas_id`=:kelas_id, `pengguna_id`=:pengguna_id, `pembayaran_id`=:pembayaran_id where `siswa_id`=:siswa_id");
+        try{
+            $this->db->query("update  {$this->siswa} set `nisn`=:nisn, `nis`=:nis, `nama`=:nama, `alamat`=:alamat, `telepon`=:telepon, `kelas_id`=:kelas_id, `pengguna_id`=:pengguna_id, `pembayaran_id`=:pembayaran_id where `siswa_id`=:siswa_id");
         $this->db->bind('siswa_id', $data['siswa_id']);
         $this->db->bind('nisn', $data['nisn']);
         $this->db->bind('nis', $data['nis']);
@@ -51,10 +52,38 @@ class siswaModel{
         $this->db->bind('pengguna_id', $data['pengguna_id']);
         $this->db->bind('pembayaran_id', $data['pembayaran_id']);
         $this->db->execute();
+
+        $this->db->query("update {$this->pengguna} set `username`=:username, `password`=:password where `pengguna_id`=:pengguna_id");
+        $this->db->bind('pengguna_id',$data['pengguna_id']);
+        $this->db->bind('username', $data['username']);
+        $this->db->bind('password', $data['password']);
+        $this->db->execute();  
+        return true;
+        }
+         
+
+        catch(Exception $e) {
+            return false;
+        }
+
+   
         
-        
-        return $this->db->rowCount();
     }
+
+    // public function returnRowCount($data)
+    // {
+    //     $pengguna = $this->editPengguna($data);   
+    //     $siswa = $this->editSiswa($data);   
+    //     if($pengguna==0 && $siswa==1){
+    //         return $this->db->rowCount($pengguna);
+    //     }
+    //     if($pengguna==1 && $siswa==0){
+    //         return $this->db->rowCount($siswa);
+    //     }
+    //     if($pengguna==0 ||  $siswa==0){
+    //         return $this->db->rowCount($pengguna, $siswa);
+    //     }
+    // }
 
     public function editPengguna($data)
     {

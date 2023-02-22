@@ -17,7 +17,7 @@ class Petugas extends Controller{
 
     public function addPetugas()
     {
-        if ($this->model('petugasModel')->addPetugas($_POST)){
+        if ($this->model('petugasModel')->addPetugas($_POST)>0){
             redirect('petugas');
         }
         redirect('petugas');
@@ -25,7 +25,7 @@ class Petugas extends Controller{
 
     public function editPetugas()
     {
-        if ($this->model('petugasModel')->editPetugas($_POST) || $this->model('petugasModel')->editPengguna($_POST)){
+        if ($this->model('petugasModel')->editPetugas($_POST)>0){
             redirect('petugas');
         }
         redirect('petugas');
@@ -35,7 +35,7 @@ class Petugas extends Controller{
     {
         // var_dump($_POST['petugas_id']); die();
 
-        if ($this->model('petugasModel')->deletePetugas($_POST['petugas_id'])) {
+        if ($this->model('petugasModel')->deletePetugas($_POST['petugas_id'])>0) {
             redirect('petugas');
         }
     }

@@ -17,7 +17,7 @@
                         <div class="col-lg-6">
                             <div class="right-side-content">
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4 font-weight-bold">Welcome to Skensa Inventory!</h1>
+                                    <h1 class="h4 text-gray-900 mb-4 font-weight-bold">Selamat Datang di Sistem Pembayaran SPP</h1>
                                 </div>
                                 <form method="post" action="<?=baseurl?>auth/login" class="user">
                                     <div class="form-group">

@@ -42,6 +42,9 @@
         <li class="nav-item">
             <a class="nav-link" href="<?=baseurl?>petugas">Petugas</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="<?=baseurl?>laporan">Laporan</a>
+        </li>
 
         <!-- Nav Item - Pages Collapse Menu -->
         

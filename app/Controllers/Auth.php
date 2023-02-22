@@ -25,9 +25,14 @@ class Auth extends Controller {
     }
     public function login()
     {
-        $user = $this->model('userModel')->selectUserByUsername($_POST['username']);
-        if ($user){
-            $this->verifyPassword($user);
+        // $user = $this->model('userModel')->selectUserByUsername($_POST['username']);
+        $petugas = $this->model('userModel')->selectPetugasByUsername($_POST['username']);
+        $siswa = $this->model('userModel')->selectSiswaByUsername($_POST['username']);
+        if ($petugas){
+            $this->verifyPassword($petugas);
+        }
+        if ($siswa){
+            $this->verifyPassword($siswa);
         }
     }
     public function logout()

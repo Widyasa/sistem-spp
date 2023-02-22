@@ -57,8 +57,7 @@
                 </div>
                 <form action="<?=baseurl?>transaksi/addTransaksi" method="post">    
                     <input type="hidden" name="siswa_id" value="<?=$siswa['siswa_id']?>">
-                    <input type="hidden" name="petugas_id" value="<?=$data['petugas'] ['petugas_id']?>">
-            
+                    <input type="hidden" name="petugas_id" value="<?=$_SESSION['user']['petugas_id']?>">
                     <input type="hidden" name="pembayaran_id" value="<?=$siswa['pembayaran_id']?>">
                     <div class="modal-body">
                         <div class="row gy-4">
@@ -91,6 +90,12 @@
                                     </select>
                                 </div>
                             </div>
+                            <!-- <div class="col-12">
+                                <div class="d-flex flex-column">
+                                    <label for = "tahun_dibayar">Tanggal Bayar</label>  
+                                    <input type="datetime-local" name="tanggal_bayar" class="form-control form-control-user">
+                                </div>
+                            </div> -->
                            
                             
 

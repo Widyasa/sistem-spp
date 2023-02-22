@@ -12,15 +12,16 @@ class siswaModel{
 
     public function addSiswa($data)
     {   
-        $this->db->query("insert into {$this->pengguna} values (null, :username, :password, 'siswa')");
+        $this->db->query("insert into {$this->pengguna} values (null, :username, :password, :role)");
         $this->db->bind('username', $data['username']);
         $this->db->bind('password', $data['password']);
+        $this->db->bind('role', 'siswa');
         $this->db->execute();
 
         $limit = $this->getPenggunaLimit1();
 
         $query = "insert into {$this->siswa} values (null, :nisn, :nis,  :nama, :alamat, :telepon, :kelas_id, :pengguna_id, :pembayaran_id)";
-            $this->db->query($query);
+        $this->db->query($query);
         $this->db->bind('nisn', $data['nisn']);
         $this->db->bind('nis', $data['nis']);
         $this->db->bind('nama', $data['nama']);

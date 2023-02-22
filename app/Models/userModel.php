@@ -23,6 +23,21 @@ class userModel{
         return $this->db->resultSingle();
     }
 
+    public function selectPetugasByUsername($username)
+    {
+        $this->db->query("SELECT {$this->pengguna}.*, {$this->petugas}.* from {$this->pengguna} inner join {$this->petugas} on {$this->petugas}.pengguna_id = {$this->pengguna}.pengguna_id where {$this->pengguna}.username=:username");
+        $this->db->bind('username', $username);
+        $this->db->execute();
+        return $this->db->resultSingle();
+    }
+    public function selectSiswaByUsername($username)
+    {
+        $this->db->query("SELECT {$this->pengguna}.*, {$this->siswa}.* from {$this->pengguna} inner join {$this->siswa} on {$this->siswa}.pengguna_id = {$this->pengguna}.pengguna_id where {$this->pengguna}.username=:username");
+        $this->db->bind('username', $username);
+        $this->db->execute();
+        return $this->db->resultSingle();
+    }
+
     public function selectAllPetugas()
     {
         $query = " SELECT {$this->pengguna}.*, {$this->petugas}.* FROM {$this->pengguna} INNER JOIN {$this->petugas} ON {$this->pengguna}.pengguna_id = {$this->petugas}.pengguna_id WHERE {$this->pengguna}.role='petugas' ";
@@ -31,10 +46,11 @@ class userModel{
         
         
     }
-    public function selectSinglePetugas()
+    public function selectSinglePetugas($data)
     {
-        $query = " SELECT {$this->pengguna}.*, {$this->petugas}.* FROM {$this->pengguna} INNER JOIN {$this->petugas} ON {$this->pengguna}.pengguna_id = {$this->petugas}.pengguna_id WHERE {$this->pengguna}.role='petugas' ";
+        $query = " SELECT {$this->pengguna}.*, {$this->petugas}.* FROM {$this->pengguna} INNER JOIN {$this->petugas} ON {$this->pengguna}.pengguna_id = {$this->petugas}.pengguna_id WHERE {$this->pengguna}.role='petugas' and {$this->petugas}.petugas_id=:petugas_id ";
         $this->db->query($query);
+        $this->db->bind('petugas_id', $data['petugas_id']);
         return $this->db->resultSingle();
         
         

@@ -42,4 +42,15 @@ class Siswa extends Controller{
             redirect('siswa');
         }
     }
+
+    public function detailTransaksi($id)
+    {
+        $data['transaksiSingle'] = $this->model('transaksiModel')->selectTransaksiBySiswa($id);
+
+        $this->view('templates/header', $data);
+        $this->view('templates/sidebar', $data);
+        $this->view('pages/admin/detailTransaksi', $data);
+        $this->view('templates/footer', $data);
+
+    }
 }

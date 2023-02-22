@@ -9,8 +9,12 @@ class Laporan extends Controller{
         $data['title'] = "Laporan";
         $data['siswa'] = $this->model('userModel')->selectAllSiswa();
         $data['laporan'] = $this->model('transaksiModel')->selectAllTransaksi();
-        $data['siswaSingle'] = $this->model('userModel')->selectSingleSiswa();
-        $data['tahun_ajaran'] = explode('/', $data['siswaSingle']['tahun_ajaran']);
+        if($_SESSION['user']['role']=='siswa'){
+        $data['laporan_siswa'] = $this->model('transaksiModel')->selectTransaksiBySiswa();
+        }
+        if($_SESSION['user']['role']=='petugas' || $_SESSION['user']['role'] == 'admin'){
+            $data['laporan_petugas'] = $this->model('transaksiModel')->selectTransaksiByPetugas();  
+        }
         // $data['petugas'] = $this->model('userModel')->selectSinglePetugas();
         
         // var_dump($data['petugas']); die();

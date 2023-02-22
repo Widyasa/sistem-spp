@@ -23,25 +23,31 @@
 
         <!-- Divider -->
        
-
-        <!-- Nav Item - Dashboard -->
+        <?php if($_SESSION['user']['role'] == 'petugas' || $_SESSION['user']['role'] == 'admin') : ?>
         <li class="nav-item">
             <a class="nav-link" href="<?=baseurl?>Transaksi">
                 <span>SPP</span>
             </a>
         </li>
+        <?php endif ?>
+        <?php if($_SESSION['user'] ['role'] == 'admin') : ?>
         <li class="nav-item">
              <a class="nav-link " href="<?=baseurl?>pembayaran/">Tahun Ajaran</a>
         </li>
+        <?php endif ?>
+        <?php if($_SESSION['user']['role'] == 'petugas' || $_SESSION['user']['role'] == 'admin') : ?>
         <li class="nav-item">
              <a class="nav-link" href="<?=baseurl?>kelas/">Kelas</a>
         </li>
+        <?php endif ?>
+        <?php if($_SESSION['user'] ['role'] == 'admin') : ?>
         <li class="nav-item">
             <a class="nav-link" href="<?=baseurl?>/siswa">Siswa</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="<?=baseurl?>petugas">Petugas</a>
         </li>
+        <?php endif ?>
         <li class="nav-item">
             <a class="nav-link" href="<?=baseurl?>laporan">Laporan</a>
         </li>
@@ -57,19 +63,12 @@
         <hr class="sidebar-divider my-0">
 
         <!-- Nav Item - Tables -->
-        <?php if($_SESSION['user']['role']==='siswa' || $_SESSION['user']['role']==='petugas'):?>
-            <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Profile</span></a>
-            </li>
-        <?php endif ?>
+
 
 
         <!-- Nav Item - Tables -->
         <li class="nav-item">
             <a class="nav-link" href="<?=baseurl?>auth/logout">
-                <i class="fas fa-fw fa-table"></i>
                 <span>Logout</span></a>
         </li>
 
@@ -77,9 +76,9 @@
         <hr class="sidebar-divider d-none d-md-block">
 
         <!-- Sidebar Toggler (Sidebar) -->
-        <div class="text-center d-none d-md-inline">
+        <!-- <div class="text-center d-none d-md-inline">
             <button class="rounded-circle border-0" id="sidebarToggle"></button>
-        </div>
+        </div> -->
 
     </ul>
     <!-- End of Sidebar -->

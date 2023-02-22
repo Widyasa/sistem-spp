@@ -13,8 +13,15 @@ class transaksiModel{
 
     public function selectTransaksiBySiswa()
     {
-        $this->db->query("SELECT {$this->transaksi}.*, {$this->petugas}.nama, {$this->pembayaran}.* from transaksi inner join petugas on petugas.petugas_id = transaksi.petugas_id inner join pembayaran on transaksi.pembayaran_id = pembayaran.pembayaran_id  where transaksi.siswa_id=:siswa_id");
-        $this->db->bind('siswa_id', $_SESSION['siswa_id']);
+        $this->db->query("SELECT {$this->transaksi}.*, {$this->siswa}.nama as 'nama_siswa', {$this->petugas}.nama as 'nama_petugas', {$this->pembayaran}.* from transaksi inner join petugas on petugas.petugas_id = transaksi.petugas_id inner join pembayaran on transaksi.pembayaran_id = pembayaran.pembayaran_id inner join siswa on siswa.siswa_id = transaksi.siswa_id   where transaksi.siswa_id=:siswa_id");
+        $this->db->bind('siswa_id', $_SESSION['user']['siswa_id']);
+        $this->db->execute();
+        return $this->db->resultAll();   
+    }
+    public function selectTransaksiByPetugas()
+    {
+        $this->db->query("SELECT {$this->transaksi}.*, {$this->siswa}.nama as 'nama_siswa', {$this->petugas}.nama as 'nama_petugas', {$this->pembayaran}.* from transaksi inner join petugas on petugas.petugas_id = transaksi.petugas_id inner join pembayaran on transaksi.pembayaran_id = pembayaran.pembayaran_id inner join siswa on transaksi.siswa_id = siswa.siswa_id where transaksi.petugas_id=:petugas_id");
+        $this->db->bind('petugas_id', $_SESSION['user']['petugas_id']);
         $this->db->execute();
         return $this->db->resultAll();   
     }

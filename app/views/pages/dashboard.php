@@ -34,8 +34,10 @@
                     </div>
                     <!-- Card Body -->
                     <div class="card-body">
-                        <div class="chart-area">
-                            
+                        <div class=" ">
+                            <video width="100%" loop="true" autoplay="autoplay" controls muted>
+                                <source  src="<?=assets("video/contoh.mp4")?>" type="video/mp4" style="width: fit-content;">
+                            </video>
                         </div>
                     </div>
                 </div>

@@ -17,24 +17,32 @@ class Pembayaran extends Controller{
 
     public function addPembayaran()
     {
-        if ($this->model('pembayaranModel')->addPembayaran($_POST)){
+        if ($this->model('pembayaranModel')->addPembayaran($_POST)>0){
+            Flasher::setFlash('Berhasil', 'Ditambahkan', 'success');
             redirect('pembayaran');
         }
+        Flasher::setFlash('Gagal', 'Ditambahkan', 'danger');
         redirect('pembayaran');
     }
 
     public function editPembayaran()
     {
-        if ($this->model('pembayaranModel')->editPembayaran($_POST)){
+        if ($this->model('pembayaranModel')->editPembayaran($_POST)>0){
+            Flasher::setFlash('Berhasil', 'Diubah', 'success');
+
             redirect('pembayaran');
         }
+        Flasher::setFlash('Gagal', 'Diubah', 'danger');
         redirect('pembayaran');
     }
 
     public function deletePembayaran()
     {
         if ($this->model('pembayaranModel')->deletePembayaran($_POST['pembayaran_id'])) {
+            Flasher::setFlash('Berhasil', 'Dihapus', 'success');
             redirect('pembayaran');  
         }
+        Flasher::setFlash('Gagal', 'Dihapus', 'danger');
+
     }
 }

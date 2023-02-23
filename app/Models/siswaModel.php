@@ -12,6 +12,7 @@ class siswaModel{
 
     public function addSiswa($data)
     {   
+        try{
         $this->db->query("insert into {$this->pengguna} values (null, :username, :password, :role)");
         $this->db->bind('username', $data['username']);
         $this->db->bind('password', $data['password']);
@@ -32,8 +33,15 @@ class siswaModel{
         $this->db->bind('pembayaran_id', $data['pembayaran_id']);
         $this->db->execute();
 
+        $this->db->commit();
+        return true;
+        } catch(Exception $e){
+            $this->db->rollBack();
+            return false;
+        }
 
-        return $this->db->rowCount();
+
+        // return $this->db->rowCount();
     }
 
 
@@ -58,11 +66,13 @@ class siswaModel{
         $this->db->bind('username', $data['username']);
         $this->db->bind('password', $data['password']);
         $this->db->execute();  
+        $this->db->commit();
         return true;
         }
          
 
         catch(Exception $e) {
+            $this->db->rollBack();
             return false;
         }
 
@@ -70,37 +80,22 @@ class siswaModel{
         
     }
 
-    // public function returnRowCount($data)
-    // {
-    //     $pengguna = $this->editPengguna($data);   
-    //     $siswa = $this->editSiswa($data);   
-    //     if($pengguna==0 && $siswa==1){
-    //         return $this->db->rowCount($pengguna);
-    //     }
-    //     if($pengguna==1 && $siswa==0){
-    //         return $this->db->rowCount($siswa);
-    //     }
-    //     if($pengguna==0 ||  $siswa==0){
-    //         return $this->db->rowCount($pengguna, $siswa);
-    //     }
-    // }
+    
 
-    public function editPengguna($data)
-    {
-        $this->db->query("update {$this->pengguna} set `username`=:username, `password`=:password where `pengguna_id`=:pengguna_id");
-        $this->db->bind('pengguna_id',$data['pengguna_id']);
-        $this->db->bind('username', $data['username']);
-        $this->db->bind('password', $data['password']);
-        $this->db->execute();   
-
-        return $this->db->rowCount();
-    }
+  
     public function deleteSiswa($id)
     {
+        try{
         $this->db->query("DELETE from {$this->siswa} where `siswa_id`=:siswa_id");
         $this->db->bind('siswa_id',$id);
         $this->db->execute();
-        return $this->db->rowCount();
+        $this->db->commit();
+        return true;
+        }catch(Exception $e){
+            $this->db->rollBack();
+            return false;
+        }
+       
     }
 
     public function getPenggunaLimit1()

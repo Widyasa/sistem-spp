@@ -3,12 +3,13 @@
 
     <div class="container-fluid">
         <div class="d-flex flex-row align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800 mt-5 pt-3">Table Petugas</h1>
+            <h1 class="h3 mb-0 text-gray-800 mt-5 pt-3"> Petugas</h1>
             <button type="button" class="align-self-end btn btn-primary" href="#" data-toggle="modal" data-target="#addModal">
                  Tambah
             </button>
 
         </div>
+        <?php Flasher::flash()?>
 
         <div class="card shadow mb-4">
             <div class="card-header py-3">

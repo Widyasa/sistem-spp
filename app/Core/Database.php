@@ -61,6 +61,14 @@ class Database{
         $this->execute();
          return $this->stmt->fetch(PDO::FETCH_ASSOC);
     }
+    public function commit()
+    {
+        $this->dbh->commit();
+    }
+    public function rollBack()
+    {
+        $this->dbh->rollBack();
+    }
 
 
 }

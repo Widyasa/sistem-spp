@@ -17,23 +17,28 @@ class kelas extends Controller{
 
     public function addKelas()
     {
-        if ($this->model('kelasModel')->addKelas($_POST)){
+        if ($this->model('kelasModel')->addKelas($_POST)>0){
+            Flasher::setFlash('Berhasil', 'Ditambahkan', 'success');
             redirect('kelas');
         }
+        Flasher::setFlash('Gagal', 'Ditambahkan', 'danger');
         redirect('kelas');
     }
 
     public function editKelas()
     {
-        if ($this->model('kelasModel')->editKelas($_POST)){
+        if ($this->model('kelasModel')->editKelas($_POST)>0){
+            Flasher::setFlash('Berhasil', 'Diedit', 'success');
             redirect('kelas');
         }
+        Flasher::setFlash('Gagal', 'Diedit', 'danger');
         redirect('kelas');
     }
 
     public function deleteKelas()
     {
         if ($this->model('kelasModel')->deleteKelas($_POST['kelas_id'])) {
+            Flasher::setFlash('Berhasil', 'Dihapus', 'success');
             redirect('kelas');  
         }
     }

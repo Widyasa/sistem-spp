@@ -18,16 +18,20 @@ class Petugas extends Controller{
     public function addPetugas()
     {
         if ($this->model('petugasModel')->addPetugas($_POST)>0){
+            Flasher::setFlash('Berhasil', 'Ditambahkan', 'success');
             redirect('petugas');
         }
+        Flasher::setFlash('Gagal', 'Ditambahkan', 'danger');
         redirect('petugas');
     }
 
     public function editPetugas()
     {
         if ($this->model('petugasModel')->editPetugas($_POST)>0){
+            Flasher::setFlash('Berhasil', 'Diedit', 'success');
             redirect('petugas');
         }
+        Flasher::setFlash('Gagal', 'Diedit', 'danger');
         redirect('petugas');
     }
 
@@ -36,6 +40,7 @@ class Petugas extends Controller{
         // var_dump($_POST['petugas_id']); die();
 
         if ($this->model('petugasModel')->deletePetugas($_POST['petugas_id'])>0) {
+            Flasher::setFlash('Berhasil', 'Dihapus', 'success');
             redirect('petugas');
         }
     }

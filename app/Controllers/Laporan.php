@@ -23,6 +23,13 @@ class Laporan extends Controller{
         $this->view('pages/admin/laporan', $data);
         $this->view('templates/footer', $data);
     }
+    public function laporan()
+    {
+        $data['title'] = 'Generate Laporan';
+        $data['laporan'] = $this->model('transaksiModel')->selectAllTransaksi();
+        $this->view('templates/header', $data);
+        $this->view('pages/admin/generateLaporan', $data);
+    }
 
   
 

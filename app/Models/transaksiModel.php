@@ -47,8 +47,7 @@ class transaksiModel{
 
     public function addTransaksi($data)
     {
-        // var_dump($data); die;
-        // $tanggal_bayar=date_format(date_create($data['tanggal_bayar']), "Y/m/d H:i:s");
+        try{
         $this->db->query("INSERT into {$this->transaksi}  values (null, :tanggal_bayar, :bulan_dibayar, :tahun_dibayar, :siswa_id, :petugas_id, :pembayaran_id)");
         $this->db->bind('tanggal_bayar', date("Y/m/d H:i:s"));
         $this->db->bind('bulan_dibayar', $data['bulan_dibayar']);
@@ -57,6 +56,12 @@ class transaksiModel{
         $this->db->bind('petugas_id', $data['petugas_id']);
         $this->db->bind('pembayaran_id', $data['pembayaran_id']);
         $this->db->execute();
-        return $this->db->rowCount();
-    }
+        // return $this->db->rowCount();
+        $this->db->commit();
+        return true;
+        } catch(Exception $e){
+            $this->db->rollBack();
+            return false;
+        }
+    } 
 }

@@ -25,10 +25,13 @@ class Transaksi extends Controller{
         $condition = $this->model('transaksiModel')->getDataBulan($_POST);
         if($condition == 0){
             if ($this->model('transaksiModel')->addTransaksi($_POST)){
+                Flasher::setFlash('Pembayaran SPP Berhasil', 'Ditambahkan', 'success');
                 redirect('transaksi');
             }
-            var_dump('tambah transaksi gagal'); die;
+            // var_dump('tambah transaksi gagal'); die;
         }
+        Flasher::setFlash('Pembayaran SPP', 'Sudah Ada', 'danger');
+
         redirect('transaksi');
         
     }

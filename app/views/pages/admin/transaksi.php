@@ -3,12 +3,12 @@
 
     <div class="container-fluid">
         <div class="d-flex flex-row align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800 mt-5 pt-3">Table Petugas</h1>
+            <h1 class="h3 mb-0 text-gray-800 mt-5 pt-3"> Transaksi</h1>
         </div>
-
+        <?php Flasher::flash()?>
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Tabel Petugas</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Tabel Transaksi</h6>
             </div>
             <div class="card-body">
                 <div class="table-responsive">

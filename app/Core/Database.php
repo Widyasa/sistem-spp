@@ -11,6 +11,7 @@ class Database{
         $dsn ="mysql:host={$this->db_host};dbname={$this->db_name}";
         try {
             $this->dbh =new PDO($dsn, $this->db_user, $this->db_pass);
+            $this->dbh->beginTransaction();
         }catch (PDOException $e){
             die($e->getMessage());
         }
@@ -63,10 +64,12 @@ class Database{
     }
     public function commit()
     {
+        // $this->dbh->commit();
         $this->dbh->commit();
     }
     public function rollBack()
     {
+        // $this->dbh->rollBack();
         $this->dbh->rollBack();
     }
 

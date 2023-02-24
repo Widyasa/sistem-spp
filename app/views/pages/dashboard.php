@@ -30,13 +30,13 @@
                     <!-- Card Header - Dropdown -->
                     <div
                             class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-primary">Contoh Video</h6>
+                        <h6 class="m-0 font-weight-bold text-primary"> Video</h6>
                     </div>
                     <!-- Card Body -->
                     <div class="card-body">
                         <div class=" ">
-                            <video width="100%" loop="true" autoplay="autoplay" controls muted>
-                                <source  src="<?=assets("video/contoh.mp4")?>" type="video/mp4" style="width: fit-content;">
+                            <video class="h-100" loop="true" autoplay="autoplay" controls muted src="<?=assets("video/contoh.mp4")?>">
+                                <!-- <source   type="video/mp4" style="width: fit-content;"> -->
                             </video>
                         </div>
                     </div>

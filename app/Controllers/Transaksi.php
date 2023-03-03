@@ -8,14 +8,22 @@ class Transaksi extends Controller
         }
         
         $data['title'] = "Transaksi";
-        $data['siswa'] = $this->model('userModel')->selectAllSiswa();
-        $data['siswaSingle'] = $this->model('userModel')->selectSingleSiswa();
-        $data['tahun_ajaran'] = explode('/', $data['siswaSingle']['tahun_ajaran']);
+        if (isset($_POST['keyword'])) {
+            $data['siswa'] = $this->model('userModel')->selectSiswaByNis();   
+            $data['siswaSingle'] = $this->model('userModel')->selectSingleSiswa();
+            $data['tahun_ajaran'] = explode('/', $data['siswaSingle']['tahun_ajaran']);
+            $this->view('templates/header', $data);
+            $this->view('templates/sidebar', $data);
+            $this->view('pages/admin/transaksiSiswa', $data);
+            $this->view('templates/footer', $data);
+        } else{
+            $this->view('templates/header', $data);
+            $this->view('templates/sidebar', $data);
+            $this->view('pages/admin/transaksi', $data);
+            $this->view('templates/footer', $data);
+        }
 
-        $this->view('templates/header', $data);
-        $this->view('templates/sidebar', $data);
-        $this->view('pages/admin/transaksi', $data);
-        $this->view('templates/footer', $data);
+       
     }
 
     public function addTransaksi()

@@ -31,17 +31,14 @@ class transaksiModel{
         return $this->db->resultAll();   
     }
 
+
     public function getDataBulan($data)
     {
-        // $bulan = date_format(date_create($data['bulan_tahun_bayar']), 'm');
-        // $tahun = date_format(date_create($data['bulan_tahun_bayar']), 'Y');
         $this->db->query("SELECT * from {$this->transaksi} where `bulan_dibayar`=:bulan_dibayar and `tahun_dibayar`=:tahun_dibayar and `siswa_id`=:siswa_id");
         $this->db->bind('bulan_dibayar', $data['bulan_dibayar'] );
         $this->db->bind('tahun_dibayar', $data['tahun_dibayar'] );
         $this->db->bind('siswa_id', $data['siswa_id'] );
-        // var_dump($this->db->execute()); die;
         $this->db->execute();
-        // var_dump($this->db->rowCount()); die;
         return $this->db->rowCount();
     }
 
@@ -56,7 +53,6 @@ class transaksiModel{
         $this->db->bind('petugas_id', $data['petugas_id']);
         $this->db->bind('pembayaran_id', $data['pembayaran_id']);
         $this->db->execute();
-        // return $this->db->rowCount();
         $this->db->commit();
         return true;
         } catch(Exception $e){

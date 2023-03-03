@@ -41,7 +41,6 @@ class siswaModel{
         }
 
 
-        // return $this->db->rowCount();
     }
 
 
@@ -49,7 +48,7 @@ class siswaModel{
     public function editSiswa($data)
     {
         try{
-            $this->db->query("update  {$this->siswa} set `nisn`=:nisn, `nis`=:nis, `nama`=:nama, `alamat`=:alamat, `telepon`=:telepon, `kelas_id`=:kelas_id, `pengguna_id`=:pengguna_id, `pembayaran_id`=:pembayaran_id where `siswa_id`=:siswa_id");
+        $this->db->query("update  {$this->siswa} set `nisn`=:nisn, `nis`=:nis, `nama`=:nama, `alamat`=:alamat, `telepon`=:telepon, `kelas_id`=:kelas_id, `pengguna_id`=:pengguna_id, `pembayaran_id`=:pembayaran_id where `siswa_id`=:siswa_id");
         $this->db->bind('siswa_id', $data['siswa_id']);
         $this->db->bind('nisn', $data['nisn']);
         $this->db->bind('nis', $data['nis']);

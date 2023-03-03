@@ -15,7 +15,6 @@ class userModel{
 
     public function selectUserByUsername($username)
     {
-//        var_dump($username); die();
         $query = "SELECT * FROM {$this->pengguna} where `username`=:username";
         $this->db->query($query);
         $this->db->bind('username', $username);
@@ -59,6 +58,14 @@ class userModel{
     {
         $query = "SELECT {$this->siswa}.*, {$this->pengguna}.*, {$this->kelas}.*, {$this->pembayaran}.* from ((({$this->siswa} inner join {$this->pengguna} on {$this->siswa}.pengguna_id = {$this->pengguna}.pengguna_id) inner join {$this->kelas} on {$this->siswa}.kelas_id = {$this->kelas}.kelas_id) inner join {$this->pembayaran} on {$this->siswa}.pembayaran_id = {$this->pembayaran}.pembayaran_id)";
         $this->db->query($query);
+        return $this->db->resultALl();
+    }
+    public function selectSiswaByNis()
+    {
+        $keyword = $_POST['keyword'];
+        $query = "SELECT {$this->siswa}.*, {$this->pengguna}.*, {$this->kelas}.*, {$this->pembayaran}.* from ((({$this->siswa} inner join {$this->pengguna} on {$this->siswa}.pengguna_id = {$this->pengguna}.pengguna_id) inner join {$this->kelas} on {$this->siswa}.kelas_id = {$this->kelas}.kelas_id) inner join {$this->pembayaran} on {$this->siswa}.pembayaran_id = {$this->pembayaran}.pembayaran_id) where :keyword = {$this->siswa}.nis";
+        $this->db->query($query);
+        $this->db->bind('keyword', $keyword);
         return $this->db->resultALl();
     }
     public function selectSIngleSiswa()

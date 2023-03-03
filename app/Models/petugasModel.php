@@ -22,7 +22,7 @@ class petugasModel{
         $query = "insert into {$this->petugas} values (null, :nama, :pengguna_id)";
             $this->db->query($query);
         $this->db->bind('nama', $data['nama']);
-        $this->db->bind('pengguna_id', $limit['pengguna_id']);
+            $this->db->bind('pengguna_id', $limit['pengguna_id']);
         $this->db->execute();
         
         $this->db->commit();

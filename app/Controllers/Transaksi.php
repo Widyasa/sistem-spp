@@ -1,5 +1,6 @@
 <?php
-class Transaksi extends Controller{
+class Transaksi extends Controller
+{
     public function index()
     {
         if(empty($_SESSION['user'])){
@@ -10,9 +11,7 @@ class Transaksi extends Controller{
         $data['siswa'] = $this->model('userModel')->selectAllSiswa();
         $data['siswaSingle'] = $this->model('userModel')->selectSingleSiswa();
         $data['tahun_ajaran'] = explode('/', $data['siswaSingle']['tahun_ajaran']);
-        // $data['petugas'] = $this->model('userModel')->selectSinglePetugas();
-        
-        // var_dump($data['petugas']); die();
+
         $this->view('templates/header', $data);
         $this->view('templates/sidebar', $data);
         $this->view('pages/admin/transaksi', $data);
@@ -21,14 +20,12 @@ class Transaksi extends Controller{
 
     public function addTransaksi()
     {
-        // var_dump($_POST); die;
         $condition = $this->model('transaksiModel')->getDataBulan($_POST);
         if($condition == 0){
             if ($this->model('transaksiModel')->addTransaksi($_POST)){
                 Flasher::setFlash('Pembayaran SPP Berhasil', 'Ditambahkan', 'success');
                 redirect('transaksi');
             }
-            // var_dump('tambah transaksi gagal'); die;
         }
         Flasher::setFlash('Pembayaran SPP', 'Sudah Ada', 'danger');
 

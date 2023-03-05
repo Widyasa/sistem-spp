@@ -5,44 +5,122 @@ class Siswa extends Controller{
         if(empty($_SESSION['user'])){
             redirect('auth');
         }
-        
         $data['title'] = "Siswa";
-        $data['siswa'] = $this->model('userModel')->selectAllSiswa();
-        $data['kelas'] = $this->model('kelasModel')->selectAllKelas();
-        $data['pembayaran'] = $this->model('pembayaranModel')->selectAllPembayaran();
-        
-        // var_dump($data['petugas']); die();
-        $this->view('templates/header', $data);
-        $this->view('templates/sidebar', $data);
-        $this->view('pages/admin/siswa', $data);
-        $this->view('templates/footer', $data);
+   
+
+        if(isset($_POST['nis'])){
+            $data['siswa'] = $this->model('userModel')->selectSiswaByNis();
+            $data['kelas'] = $this->model('kelasModel')->selectAllKelas();
+            $data['pembayaran'] = $this->model('pembayaranModel')->selectAllPembayaran();
+            $this->view('templates/header', $data);
+            $this->view('templates/sidebar', $data);
+            $this->view('pages/admin/crudSiswa', $data);
+            $this->view('templates/footer', $data);
+        } else{
+            $data['kelas'] = $this->model('kelasModel')->selectAllKelas();
+            $data['pembayaran'] = $this->model('pembayaranModel')->selectAllPembayaran();
+            $this->view('templates/header', $data);
+            $this->view('templates/sidebar', $data);
+            $this->view('pages/admin/siswa', $data);
+            $this->view('templates/footer', $data);
+        }
+  
     }
+
 
     public function addSiswa()
     {
         if ($this->model('siswaModel')->addSiswa($_POST)>0){
              Flasher::setFlash('Berhasil', 'Ditambahkan', 'success');
-            redirect('siswa');
+             $data['title'] = "Siswa";
+             if(isset($_POST['nis'])){
+                $data['siswa'] = $this->model('userModel')->selectSiswaByNis();
+                $data['kelas'] = $this->model('kelasModel')->selectAllKelas();
+                $data['pembayaran'] = $this->model('pembayaranModel')->selectAllPembayaran();
+                $this->view('templates/header', $data);
+                $this->view('templates/sidebar', $data);
+                $this->view('pages/admin/crudSiswa', $data);
+                $this->view('templates/footer', $data);
+             }
+             else{
+                $data['kelas'] = $this->model('kelasModel')->selectAllKelas();
+                $data['pembayaran'] = $this->model('pembayaranModel')->selectAllPembayaran();
+                $this->view('templates/header', $data);
+                $this->view('templates/sidebar', $data);
+                $this->view('pages/admin/siswa', $data);
+                $this->view('templates/footer', $data);
+             }
+     
         }
         Flasher::setFlash('Gagal', 'Data', 'danger');
-        redirect('siswa');
+        if(isset($_POST['nis'])){
+            $data['siswa'] = $this->model('userModel')->selectSiswaByNis();
+            $data['kelas'] = $this->model('kelasModel')->selectAllKelas();
+            $data['pembayaran'] = $this->model('pembayaranModel')->selectAllPembayaran();
+            $this->view('templates/header', $data);
+            $this->view('templates/sidebar', $data);
+            $this->view('pages/admin/crudSiswa', $data);
+            $this->view('templates/footer', $data);
+         }
+         else{
+            $data['kelas'] = $this->model('kelasModel')->selectAllKelas();
+            $data['pembayaran'] = $this->model('pembayaranModel')->selectAllPembayaran();
+            $this->view('templates/header', $data);
+            $this->view('templates/sidebar', $data);
+            $this->view('pages/admin/siswa', $data);
+            $this->view('templates/footer', $data);
+         }
+        
     }
 
     public function editSiswa()
     {
+      
         if ($this->model('siswaModel')->editSiswa($_POST)>0){
             Flasher::setFlash('Berhasil', 'Diubah', 'success');
-            redirect('siswa');
+            $data['title'] = "Siswa";
+             if(isset($_POST['nis'])){
+                $data['siswa'] = $this->model('userModel')->selectSiswaByNis();
+                $data['kelas'] = $this->model('kelasModel')->selectAllKelas();
+                $data['pembayaran'] = $this->model('pembayaranModel')->selectAllPembayaran();
+                $this->view('templates/header', $data);
+                $this->view('templates/sidebar', $data);
+                $this->view('pages/admin/crudSiswa', $data);
+                $this->view('templates/footer', $data);
+             }
+             else{
+                $data['kelas'] = $this->model('kelasModel')->selectAllKelas();
+                $data['pembayaran'] = $this->model('pembayaranModel')->selectAllPembayaran();
+                $this->view('templates/header', $data);
+                $this->view('templates/sidebar', $data);
+                $this->view('pages/admin/siswa', $data);
+                $this->view('templates/footer', $data);
+             }
         }
-            Flasher::setFlash('Gagal', 'Ditambahkan', 'danger');
-            redirect('siswa');
+            Flasher::setFlash('Gagal', 'Diubah', 'danger');
+            $data['title'] = "Siswa";
+             if(isset($_POST['nis'])){
+                $data['siswa'] = $this->model('userModel')->selectSiswaByNis();
+                $data['kelas'] = $this->model('kelasModel')->selectAllKelas();
+                $data['pembayaran'] = $this->model('pembayaranModel')->selectAllPembayaran();
+                $this->view('templates/header', $data);
+                $this->view('templates/sidebar', $data);
+                $this->view('pages/admin/crudSiswa', $data);
+                $this->view('templates/footer', $data);
+             }
+             else{
+                $data['kelas'] = $this->model('kelasModel')->selectAllKelas();
+                $data['pembayaran'] = $this->model('pembayaranModel')->selectAllPembayaran();
+                $this->view('templates/header', $data);
+                $this->view('templates/sidebar', $data);
+                $this->view('pages/admin/siswa', $data);
+                $this->view('templates/footer', $data);
+             }
         
     }
 
     public function deleteSiswa()
     {
-        // var_dump($_POST['petugas_id']); die();
-
         if ($this->model('siswaModel')->deleteSiswa($_POST['siswa_id'])==1) {
             Flasher::setFlash('Berhasil', 'Dihapus', 'success');
             redirect('siswa');

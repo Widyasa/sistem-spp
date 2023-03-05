@@ -8,7 +8,7 @@
         <?php Flasher::flash()?>
         <form action="<?=baseurl?>transaksi" method="post">
             <div class="d-flex flex-row mb-3">
-                <input type="text" name="keyword" placeholder="input nis siswa" class="form-control w-25" id="">
+                <input type="text" name="nis" placeholder="input nis siswa" class="form-control w-25" id="">
                 <button class="btn btn-primary" type="submit">Cari</button>
             </div>
         </form>

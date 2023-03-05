@@ -42,7 +42,7 @@
         <?php endif ?>
         <?php if($_SESSION['user'] ['role'] == 'admin') : ?>
         <li class="nav-item">
-            <a class="nav-link" href="<?=baseurl?>/siswa">Siswa</a>
+            <a class="nav-link" href="<?=baseurl?>siswa">Siswa</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="<?=baseurl?>petugas">Petugas</a>

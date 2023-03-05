@@ -1,6 +1,6 @@
 <?php
 class App{
-    private $controller = "Home";
+    private $controller = "Dashboard";
     private $method = "index";
     private $params = [];
 

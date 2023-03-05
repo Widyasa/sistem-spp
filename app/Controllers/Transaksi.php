@@ -8,7 +8,7 @@ class Transaksi extends Controller
         }
         
         $data['title'] = "Transaksi";
-        if (isset($_POST['keyword'])) {
+        if (isset($_POST['nis'])) {
             $data['siswa'] = $this->model('userModel')->selectSiswaByNis();   
             $data['siswaSingle'] = $this->model('userModel')->selectSingleSiswa();
             $data['tahun_ajaran'] = explode('/', $data['siswaSingle']['tahun_ajaran']);

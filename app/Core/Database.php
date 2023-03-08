@@ -38,8 +38,9 @@ class Database{
             default:
                 $type = PDO::PARAM_STR;
         }
-        }
         $this->stmt->bindValue($param, $value, $type);
+        }
+        
     }
 
     public function execute()
